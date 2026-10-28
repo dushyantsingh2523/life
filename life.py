@@ -12,7 +12,7 @@ def log(msg):
 
 def load_model():
     log("loading model weights... (8 s)")
-    time.sleep(100)
+    time.sleep(8)
     state["ready"] = True
     log("model loaded: READY")
 
