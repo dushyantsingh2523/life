@@ -4,7 +4,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 GRACEFUL = os.environ.get("GRACEFUL", "1") == "1"
 START = time.time()
 VERSION = "2"
-state = {"ready": True, "in_flight": 0}
+state = {"ready": False, "in_flight": 0}
 lock = threading.Lock()
 
 def log(msg):
