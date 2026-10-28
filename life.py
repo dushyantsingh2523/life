@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 GRACEFUL = os.environ.get("GRACEFUL", "1") == "1"
 START = time.time()
-VERSION = "2"
+VERSION = "3"
 state = {"ready": False, "in_flight": 0}
 lock = threading.Lock()
 

@@ -37,7 +37,7 @@ class LifeTest(unittest.TestCase):
             time.sleep(0.5)
         status, body = get("/version")
         self.assertEqual(status, 200)
-        self.assertEqual(body["version"], "2")
+        self.assertEqual(body["version"], "3")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

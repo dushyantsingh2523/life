@@ -16,7 +16,16 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t life:${{ github.sha }} .
-      - run: docker images life
+      - name: log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+      - name: build and push
+        run: |
+          IMAGE=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/life:${{ github.sha }}
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+          echo "pushed $IMAGE"
